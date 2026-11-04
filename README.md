@@ -1,4 +1,4 @@
-# GOL Program Cycle Manager
+# Halo: GOL's Program Cycle Manager
 
 Single-file web app (`index.html`) that mirrors the GOL triage workbook: request normalization,
 competition detection, equity-based approvals, secondary offers, day rate pass, budget tracking,
