@@ -449,20 +449,20 @@ button, .card, .gear, .settings-tab, .back-link{ touch-action:manipulation; }
 #splash{
   position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center;
   background:rgba(250,248,245,.10); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
-  animation:splashFade .2s ease .4s forwards;
+  animation:splashFade .25s ease .5s forwards;
 }
-#splash.out{ animation:splashOut .2s ease forwards; pointer-events:none; }
+#splash.out{ animation:splashOut .25s ease forwards; pointer-events:none; }
 @keyframes splashFade{ to{ opacity:0; } }
 @keyframes splashOut{ from{ opacity:var(--o,1); } to{ opacity:0; } }
 #splash .tile{ width:98px; height:98px; overflow:visible; filter:drop-shadow(0 8px 16px rgba(0,0,0,.28)); }
-#splash .spin{ transform-box:view-box; transform-origin:50px 50px; animation:splashSpin .38s cubic-bezier(.45,.05,.25,1) forwards; }
-#splash .dot{ transform-box:fill-box; transform-origin:center; animation:splashShoot .27s cubic-bezier(.3,.05,.2,1) forwards; animation-delay:calc(.16s + var(--i) * .008s); }
+#splash .spin{ transform-box:view-box; transform-origin:50px 50px; animation:splashSpin .475s cubic-bezier(.45,.05,.25,1) forwards; }
+#splash .dot{ transform-box:fill-box; transform-origin:center; animation:splashShoot .34s cubic-bezier(.3,.05,.2,1) forwards; animation-delay:calc(.2s + var(--i) * .01s); }
 @keyframes splashSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
 @keyframes splashShoot{ 0%{ transform:translate(0,0) scale(1); opacity:1; } 55%{ opacity:1; } 100%{ transform:translate(var(--dx),var(--dy)) scale(.6); opacity:0; } }
 @media (prefers-reduced-motion:reduce){
   #splash .spin, #splash .dot{ animation:none; }
   #splash .dot{ opacity:1; }
-  #splash{ animation-delay:.25s; }
+  #splash{ animation-delay:.31s; }
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -7356,12 +7356,12 @@ if('serviceWorker' in navigator && /^https?:/.test(location.protocol)){
   const s = document.getElementById('splash'); if(!s) return;
   let gone = false;
   const done = () => { if(!gone){ gone = true; s.remove(); } };
-  const lock = setTimeout(() => { s.style.pointerEvents = 'none'; }, 400);
-  const kill = setTimeout(done, 640);
+  const lock = setTimeout(() => { s.style.pointerEvents = 'none'; }, 500);
+  const kill = setTimeout(done, 800);
   s.addEventListener('pointerdown', () => {
     if(s.classList.contains('out')) return;
     s.style.setProperty('--o', getComputedStyle(s).opacity);
-    s.classList.add('out'); clearTimeout(lock); clearTimeout(kill); setTimeout(done, 220);
+    s.classList.add('out'); clearTimeout(lock); clearTimeout(kill); setTimeout(done, 280);
   });
 })();
 
